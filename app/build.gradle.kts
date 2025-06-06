@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-//Retrofit=> consumir API
+    //Retrofit=> consumir API
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -82,5 +82,11 @@ dependencies {
 
     implementation(libs.hilt.navigation.compose)
 
+    //icons extended
+
+    implementation(libs.androidx.material.icons.extended)
+
+//grid
+    implementation(libs.androidx.foundation)
 
 }

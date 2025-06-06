@@ -3,13 +3,16 @@ import com.example.cooksy.R
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Science
+import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class BottomNavScreen(
     val route: String,
-    val icon: Any, // Puede ser ImageVector o Int
+    val icon: ImageVector,
     val label: String
 ) {
-    object Home : BottomNavScreen("home", R.drawable.casa_linea, "Home")
-    object CookLab : BottomNavScreen("cooklab", R.drawable.cooklab_negro, "CookLab")
-    object Favorites : BottomNavScreen("favorites", R.drawable.corazon_blanco, "Favorites")
+    object Home : BottomNavScreen("home", Icons.Filled.Home, "Home")
+    object CookLab : BottomNavScreen("cooklab", Icons.Filled.Science, "CookLab")
+    object Favorites : BottomNavScreen("favorites", Icons.Filled.FavoriteBorder, "Favorites")
 }
