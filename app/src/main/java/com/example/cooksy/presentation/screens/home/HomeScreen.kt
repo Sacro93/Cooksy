@@ -1,6 +1,5 @@
-package com.example.cooksy.presentation.screens
+package com.example.cooksy.presentation.screens.home
 
-import android.net.http.SslCertificate.restoreState
 import com.example.cooksy.R
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -23,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cooksy.presentation.components.BottomNavigationBar
 
@@ -94,7 +92,9 @@ fun HomeScreen() {
                                 .size(60.dp)
                                 .clip(CircleShape)
                         )
+
                     }
+
                 }
 
                 Spacer(modifier = Modifier.height(25.dp))

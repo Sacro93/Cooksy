@@ -1,6 +1,4 @@
-package com.example.cooksy.presentation.screens
-
-import androidx.compose.ui.draw.clip
+package com.example.cooksy.presentation.screens.login
 
 
 import androidx.compose.foundation.Image
@@ -13,9 +11,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.painterResource // Logo si tenés imagen
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -25,11 +24,11 @@ import androidx.compose.ui.unit.sp
 import com.example.cooksy.R
 
 @Composable
-fun RegisterScreen(
-    onRegisterClick: (String, String, String) -> Unit = { _, _, _ -> },
-    onLoginClick: () -> Unit = {}
+fun LoginScreen(
+    onLoginClick: (String, String) -> Unit = { _, _ -> },
+    onSignupClick: () -> Unit = {},
+    onForgotPasswordClick: () -> Unit = {}
 ) {
-    var fullName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -64,82 +63,78 @@ fun RegisterScreen(
             )
         }
 
+
         Spacer(modifier = Modifier.height(24.dp))
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp),
+                .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Register",
+                text = "Login",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
 
             Text(
-                text = "Create your account",
+                text = "Sign in to continue.",
                 color = Color.Gray,
                 fontSize = 14.sp
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Full Name
-            OutlinedTextField(
-                value = fullName,
-                onValueChange = { fullName = it },
-                label = { Text("Full Name") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Email
+            // Email Field
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
                 label = { Text("Email") },
-                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
                 singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Password
+            // Password Field
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true,
+                shape = RoundedCornerShape(12.dp),
                 visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Register Button
+            // Login Button
             Button(
-                onClick = { onRegisterClick(fullName, email, password) },
+                onClick = { onLoginClick(email, password) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9C27B0)),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text("Sign Up", color = Color.White)
+                Text(text = "Log In", color = Color.White)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Go to Login
-            TextButton(onClick = onLoginClick) {
-                Text("Already have an account? Log In", color = Color(0xFF9C27B0))
+            TextButton(onClick = onForgotPasswordClick) {
+                Text("Forgot Password?", color = Color.Gray)
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            TextButton(onClick = onSignupClick) {
+                Text("Signup !", color = Color(0xFF9C27B0))
             }
         }
     }
@@ -147,6 +142,6 @@ fun RegisterScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun RegisterScreenPreview() {
-    RegisterScreen()
+fun LoginScreenPreview() {
+    LoginScreen()
 }

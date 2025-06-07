@@ -60,23 +60,22 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.coil.compose)
 
     //navigation?
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    //Corroutines
+    //Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    //Retrofit=> consumir API
-
+    //Retrofit=> consumer API
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
     //Hilt
-   kapt(libs.hilt.compiler)
-
+    kapt(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
 
@@ -86,7 +85,7 @@ dependencies {
 
     implementation(libs.androidx.material.icons.extended)
 
-//grid
+    //grid
     implementation(libs.androidx.foundation)
 
 }
