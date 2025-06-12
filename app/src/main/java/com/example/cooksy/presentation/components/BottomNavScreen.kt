@@ -1,5 +1,4 @@
 package com.example.cooksy.presentation.components
-import com.example.cooksy.R
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

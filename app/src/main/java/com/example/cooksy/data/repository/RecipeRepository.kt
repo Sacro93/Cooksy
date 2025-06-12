@@ -1,11 +1,8 @@
 package com.example.cooksy.data.repository
 
-import com.example.cooksy.data.model.RecipeResponse
 import com.example.cooksy.data.remote.RecipeService
-import com.example.cooksy.data.remote.RetrofitInstance
-import javax.inject.Inject
 
-class RecipeRepository @Inject constructor(
+class RecipeRepository (
     private val recipeService: RecipeService
 ){
 
