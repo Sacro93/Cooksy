@@ -17,41 +17,68 @@ fun RecipeDetailContent(recipe: Recipe) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
+            .padding(16.dp)
     ) {
+        // Imagen principal
         Image(
             painter = rememberAsyncImagePainter(recipe.image),
             contentDescription = recipe.title,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxWidth().height(250.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp)
         )
+
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Título
         Text(
             text = recipe.title,
-            style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            style = MaterialTheme.typography.headlineSmall
         )
+
         Spacer(modifier = Modifier.height(8.dp))
+
+        // Tiempo de preparación y porciones
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("Ready in: ${recipe.readyInMinutes} min")
             Text("Servings: ${recipe.servings}")
         }
+
         Spacer(modifier = Modifier.height(16.dp))
+
         Text("Ingredients", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(horizontal = 16.dp))
         Spacer(modifier = Modifier.height(8.dp))
-        recipe.ingredients?.forEach { ingredient ->
-            Text("- ${ingredient.original}", modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp))
+
+        if (!recipe.ingredients.isNullOrEmpty()) {
+            recipe.ingredients.forEach { ingredient ->
+                Text("- ${ingredient.original}", modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp))
+            }
+        } else {
+            Text("No ingredients available", modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp))
         }
+
+
         Spacer(modifier = Modifier.height(16.dp))
-        Text("Instructions", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(horizontal = 16.dp))
+
+        // Instrucciones
+        Text(
+            text = "Instructions",
+            style = MaterialTheme.typography.titleMedium
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(recipe.instructions ?: "No instructions available.", modifier = Modifier.padding(horizontal = 16.dp))
+
+        Text(recipe.instructions ?: "No instructions available.")
+
         Spacer(modifier = Modifier.height(32.dp))
+
+        // Botón de traducción (para futuro)
         Button(
             onClick = { /* TODO: Translate */ },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text("Translate to Spanish")
         }

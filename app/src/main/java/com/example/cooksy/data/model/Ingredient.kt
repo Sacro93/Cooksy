@@ -3,4 +3,5 @@ import android.R.string
 import com.google.gson.annotations.SerializedName
 
 data class Ingredient(
-    @SerializedName ("original") val original:string)
+    @SerializedName("original") val original: String
+)

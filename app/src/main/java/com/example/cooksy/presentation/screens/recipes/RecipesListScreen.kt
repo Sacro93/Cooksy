@@ -24,13 +24,7 @@ fun RecipeListScreen(
     navController: NavHostController,
     viewModel: RecipeViewModel
 ) {
-    // Obtenemos el listado desde el StateFlow
     val uiState by viewModel.uiState.collectAsState()
-
-    // Llamamos a la API solo al entrar
-    LaunchedEffect(Unit) {
-        viewModel.fetchRecipes()
-    }
 
     when (uiState) {
         is RecipeUiState.Loading -> {
@@ -65,30 +59,6 @@ fun RecipeListScreen(
 }
 
 
-@Composable
-fun RecipeItem(recipe: Recipe, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-    ) {
-        Column {
-            Image(
-                painter = rememberAsyncImagePainter(recipe.image),
-                contentDescription = recipe.title,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = recipe.title,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(8.dp)
-            )
-        }
-    }
-}
+
+
 

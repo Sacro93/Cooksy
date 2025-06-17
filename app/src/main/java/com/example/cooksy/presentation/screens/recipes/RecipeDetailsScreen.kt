@@ -10,16 +10,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavHostController
 import com.example.cooksy.viewModel.RecipeViewModel
+import androidx.compose.runtime.getValue
 
 @Composable
 fun RecipeDetailScreen(
     recipeId: Int,
-    viewModel: RecipeViewModel,
-    navController: NavHostController
+    viewModel: RecipeViewModel
 ) {
-    val uiState = viewModel.uiState.collectAsState().value
+    val uiState by viewModel.uiState.collectAsState()
 
     when (uiState) {
         is RecipeUiState.Loading -> {
@@ -28,7 +27,8 @@ fun RecipeDetailScreen(
             }
         }
         is RecipeUiState.Success -> {
-            val recipe = uiState.recipes.find { it.id == recipeId }
+            val recipes = (uiState as RecipeUiState.Success).recipes
+            val recipe = recipes.find { it.id == recipeId }
 
             recipe?.let {
                 RecipeDetailContent(recipe)
@@ -40,7 +40,7 @@ fun RecipeDetailScreen(
         }
         is RecipeUiState.Error -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(uiState.message, color = Color.Red)
+                Text((uiState as RecipeUiState.Error).message, color = Color.Red)
             }
         }
     }

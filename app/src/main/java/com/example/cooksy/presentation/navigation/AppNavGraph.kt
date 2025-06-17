@@ -45,25 +45,29 @@ fun AppNavGraph(navController: NavHostController,
             HomeScreen(navController = navController)
         }
 
+        // Recipes List
         composable(Routes.RECIPE_LIST) {
-            RecipeListScreen(navController = navController, viewModel = recipeViewModel)
+            RecipeListScreen(
+                navController = navController,
+                viewModel = recipeViewModel
+            )
         }
 
+        // Recipe Detail (con argumento)
         composable(
             route = Routes.RECIPE_DETAIL,
-            arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
+            arguments = listOf(
+                navArgument("recipeId") { type = NavType.IntType }
+            )
         ) { backStackEntry ->
 
             val recipeId = backStackEntry.arguments?.getInt("recipeId") ?: -1
 
             RecipeDetailScreen(
-                navController = navController,
-            recipeId = recipeId,
-            viewModel = recipeViewModel
+                recipeId = recipeId,
+                viewModel = recipeViewModel
             )
         }
-
-
 
 
         composable(Routes.VIRAL_RECIPES) {

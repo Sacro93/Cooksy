@@ -21,24 +21,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cooksy.presentation.screens.home.SectionItem
+import androidx.navigation.NavHostController
+import com.example.cooksy.data.SectionItem
 
 @Composable
-fun CardSectionSmall(section: SectionItem) {
+fun CardSectionSmall(section: SectionItem, navController: NavHostController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1f)
-            .clickable { /* Navegar */ },
+            .clickable { navController.navigate(section.route) },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.LightGray.copy(alpha = 0.1f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
+        Box(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(id = section.imageRes),
                 contentDescription = section.label,

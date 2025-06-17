@@ -7,11 +7,15 @@ object RetrofitInstance {
 
     private const val BASE_URL = "https://api.spoonacular.com/"
 
-    val api: RecipeService by lazy {
+    private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(RecipeService::class.java)
+    }
+
+    val api: RecipeService by lazy {
+        retrofit.create(RecipeService::class.java)
     }
 }
+/*✅ Separar la construcción del retrofit (mejor mantenimiento si en el futuro agregamos interceptores, logs, etc).*/

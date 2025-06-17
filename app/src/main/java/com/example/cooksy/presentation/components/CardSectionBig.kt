@@ -20,24 +20,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-
+import androidx.navigation.NavHostController
+import com.example.cooksy.presentation.navigation.Routes
 @Composable
-fun CardSectionBig(label: String, imageRes: Int) {
+fun CardSectionBig(
+    label: String,
+    imageRes: Int,
+    route: String?,
+    navController: NavHostController
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(220.dp)
-            .clickable { /* Navegar */ },
+            .clickable {
+                route?.let { navController.navigate(it) }
+            },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.LightGray.copy(alpha = 0.1f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
+        Box(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(id = imageRes),
                 contentDescription = label,
@@ -62,4 +67,3 @@ fun CardSectionBig(label: String, imageRes: Int) {
         }
     }
 }
-

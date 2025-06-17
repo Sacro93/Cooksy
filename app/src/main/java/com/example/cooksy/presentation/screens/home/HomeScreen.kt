@@ -19,16 +19,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.cooksy.data.SectionItem
 import com.example.cooksy.presentation.components.BottomNavigationBar
 import com.example.cooksy.presentation.components.CardSectionBig
 import com.example.cooksy.presentation.components.CardSectionSmall
+import com.example.cooksy.presentation.navigation.Routes
 
-data class SectionItem(val label: String, val imageRes: Int)
 
-val sections = listOf(
-    SectionItem("Virales", R.drawable.virales),
-    SectionItem("Al Súper", R.drawable.supermarket)
-)
+
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -98,7 +96,9 @@ fun HomeScreen(navController: NavHostController) {
                 // Card Principal "Explorar Recetas"
                 CardSectionBig(
                     label = "Explorar Recetas",
-                    imageRes = R.drawable.recipes
+                    imageRes = R.drawable.recipes,
+                    route = Routes.RECIPE_LIST,
+                    navController = navController
                 )
 
                 Spacer(modifier = Modifier.height(40.dp))
@@ -112,7 +112,7 @@ fun HomeScreen(navController: NavHostController) {
                         .height(300.dp)
                 ) {
                     items(sections) { section ->
-                        CardSectionSmall(section)
+                        CardSectionSmall(section = section, navController = navController)
                     }
                 }
             }
@@ -122,4 +122,8 @@ fun HomeScreen(navController: NavHostController) {
 
 
 
+val sections = listOf(
+    SectionItem("Virales", R.drawable.virales, Routes.VIRAL_RECIPES),
+    SectionItem("Al Súper", R.drawable.supermarket, Routes.SUPERMARKET_LIST)
+)
 
