@@ -4,9 +4,12 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.cooksy.data.repository.RecipeRepository
 import androidx.lifecycle.viewModelScope
+import com.example.cooksy.data.model.Recipe
+import com.example.cooksy.data.model.RecipeCategory
 import com.example.cooksy.presentation.screens.recipes.RecipeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /*✔ Lógica reactiva simple.
@@ -17,6 +20,8 @@ import kotlinx.coroutines.launch
 
 ✔ El ViewModel toma control de cuándo se llama por primera vez, y no la UI.*/
 
+//Offset para scroll infinito = desactivado
+
 class RecipeViewModel(
     private val repository: RecipeRepository
 ) : ViewModel() {
@@ -24,27 +29,30 @@ class RecipeViewModel(
     private val _uiState = MutableStateFlow<RecipeUiState>(RecipeUiState.Loading)
     val uiState: StateFlow<RecipeUiState> = _uiState
 
-    init {
-        fetchRecipes()
+    fun loadRecipesByCategory(type: String) {
+        viewModelScope.launch {
+            _uiState.value = RecipeUiState.Loading
+            try {
+                val list = repository.getRecipes(type = type/*, offset = 0 */)
+                _uiState.value = RecipeUiState.Success(list)
+            } catch (e: Exception) {
+                _uiState.value = RecipeUiState.Error("Error al cargar recetas.")
+            }
+        }
     }
 
-    fun fetchRecipes(number: Int = 10, tags: String = "") {
+    fun loadRecipeDetail(id: Int) {
         viewModelScope.launch {
+            _uiState.value = RecipeUiState.Loading
             try {
-                val response = repository.getRandomRecipes(number, tags)
-                Log.d("API_RESPONSE", "Fetched: ${response.recipes.size} recipes")
-
-                response.recipes.forEach { recipe ->
-                    Log.d("API_RECIPE", "Recipe: ${recipe.title}, Ingredients: ${recipe.ingredients}")
-                }
-
-                _uiState.value = RecipeUiState.Success(response.recipes)
+                val recipe = repository.getRecipeById(id)
+                _uiState.value = RecipeUiState.Success(listOf(recipe))
             } catch (e: Exception) {
-                e.printStackTrace()
-                Log.e("API_ERROR", "Error fetching recipes", e)
-                _uiState.value = RecipeUiState.Error("Failed to load recipes")
+                _uiState.value = RecipeUiState.Error("No se pudo cargar el detalle.")
             }
         }
     }
 
 }
+
+
