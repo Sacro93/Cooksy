@@ -66,7 +66,8 @@ fun AppNavGraph(
             val recipeId = backStackEntry.arguments?.getInt("recipeId") ?: -1
             RecipeDetailScreen(
                 recipeId = recipeId,
-                viewModel = recipeViewModel
+                viewModel = recipeViewModel,
+                navController = navController
             )
         }
 

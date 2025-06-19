@@ -41,6 +41,18 @@ class RecipeViewModel(
         }
     }
 
+    fun loadRecipeDetail(id: Int) {
+        viewModelScope.launch {
+            _uiState.value = RecipeUiState.Loading
+            try {
+                val recipe = repository.getRecipeById(id)
+                _uiState.value = RecipeUiState.Success(listOf(recipe))
+            } catch (e: Exception) {
+                _uiState.value = RecipeUiState.Error("No se pudo cargar el detalle.")
+            }
+        }
+    }
+
 }
 
 
