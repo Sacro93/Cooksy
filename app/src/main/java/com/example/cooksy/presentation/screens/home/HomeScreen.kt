@@ -97,7 +97,7 @@ fun HomeScreen(navController: NavHostController) {
                 CardSectionBig(
                     label = "Explorar Recetas",
                     imageRes = R.drawable.recipes,
-                    route = Routes.RECIPE_LIST,
+                    route = Routes.CATEGORY_SELECTOR,
                     navController = navController
                 )
 

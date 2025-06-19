@@ -17,8 +17,7 @@ fun RecipeDetailContent(recipe: Recipe) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
-    ) {
+            .padding(16.dp)    ) {
         // Imagen principal
         Image(
             painter = rememberAsyncImagePainter(recipe.image),

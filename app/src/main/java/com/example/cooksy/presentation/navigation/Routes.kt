@@ -1,12 +1,15 @@
 package com.example.cooksy.presentation.navigation
 
-object Routes {
 
+object Routes {
     const val LOGIN = "login"
     const val REGISTER = "register"
     const val HOME = "home"
-    const val RECIPE_LIST = "list"
+
+    const val CATEGORY_SELECTOR = "category_selector"
+    const val RECIPE_LIST_BY_CATEGORY = "list/{categoryName}"
     const val RECIPE_DETAIL = "detail/{recipeId}"
+
     const val VIRAL_RECIPES = "viral_recipes"
     const val SUPERMARKET_LIST = "supermarket_list"
     const val FAVOURITES = "favourites"
@@ -14,4 +17,5 @@ object Routes {
     const val COOK_LAB = "cook_lab"
 
     fun recipeDetail(recipeId: Int) = "detail/$recipeId"
+    fun recipeListByCategory(categoryName: String) = "list/$categoryName"
 }
