@@ -1,14 +1,18 @@
 package com.example.cooksy.data.model
 
 
-sealed class RecipeCategory(val name: String, val displayName: String) {
-    object BREAKFAST : RecipeCategory("breakfast", "Desayuno")
-    object LUNCH : RecipeCategory("lunch", "Almuerzo")
-    object DINNER : RecipeCategory("dinner", "Cena")
-    object SNACK : RecipeCategory("snack", "Snack")
-    object DESSERT : RecipeCategory("dessert", "Postre")
-    object VEGETARIAN : RecipeCategory("vegetarian", "Vegetariana")
-    object GLUTEN_FREE : RecipeCategory("gluten free", "Sin Gluten")
+sealed class RecipeCategory(
+    val name: String,
+    val displayName: String,
+    val imageResName: String // nombre del recurso en drawable, sin extensión
+) {
+    object BREAKFAST : RecipeCategory("breakfast", "Desayuno", "breakfast_time")
+    object LUNCH : RecipeCategory("lunch", "Almuerzo", "lunch_time")
+    object DINNER : RecipeCategory("dinner", "Cena", "dinner_time")
+    object SNACK : RecipeCategory("snack", "Snack", "snack_time_2")
+    object DESSERT : RecipeCategory("dessert", "Postre", "dessert")
+    object VEGETARIAN : RecipeCategory("vegetarian", "Vegetariana", "vegetarian")
+    object GLUTEN_FREE : RecipeCategory("gluten free", "Sin Gluten", "gluten_free")
 
     companion object {
         val allCategories = listOf(
@@ -20,4 +24,5 @@ sealed class RecipeCategory(val name: String, val displayName: String) {
         }
     }
 }
+
 
