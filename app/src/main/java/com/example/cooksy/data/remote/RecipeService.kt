@@ -1,8 +1,8 @@
 package com.example.cooksy.data.remote
 
 
-import com.example.cooksy.data.model.Recipe
-import com.example.cooksy.data.model.RecipeResponse
+import com.example.cooksy.data.model.recipes.Recipe
+import com.example.cooksy.data.model.recipes.RecipeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

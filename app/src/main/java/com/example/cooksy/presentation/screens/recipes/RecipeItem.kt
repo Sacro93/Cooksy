@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.cooksy.data.model.Recipe
+import com.example.cooksy.data.model.recipes.Recipe
 
 @Composable
 fun RecipeItem(recipe: Recipe, onClick: () -> Unit) {

@@ -7,15 +7,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.cooksy.viewModel.RecipeViewModel
+import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import com.example.cooksy.data.model.RecipeCategory
+import com.example.cooksy.data.model.recipes.RecipeCategory
 import com.example.cooksy.presentation.navigation.Routes
 
 @Composable

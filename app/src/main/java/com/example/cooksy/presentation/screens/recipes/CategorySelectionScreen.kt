@@ -1,6 +1,5 @@
 package com.example.cooksy.presentation.screens.recipes
 
-import android.R.attr.category
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.icons.Icons
@@ -24,7 +22,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.navigation.NavHostController
-import com.example.cooksy.data.model.RecipeCategory
+import com.example.cooksy.data.model.recipes.RecipeCategory
 import com.example.cooksy.presentation.navigation.Routes
 import androidx.compose.runtime.remember
 import androidx.compose.ui.layout.ContentScale

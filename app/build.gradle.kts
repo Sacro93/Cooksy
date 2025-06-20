@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
-
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -86,6 +86,9 @@ dependencies {
     implementation(libs.androidx.foundation)
 
 
+//serialization
+
+    implementation(libs.kotlinx.serialization.json)
 
 
 }

@@ -1,6 +1,6 @@
 package com.example.cooksy.presentation.screens.recipes
 
-import com.example.cooksy.data.model.Recipe
+import com.example.cooksy.data.model.recipes.Recipe
 
 sealed class RecipeUiState {
     object Loading : RecipeUiState()

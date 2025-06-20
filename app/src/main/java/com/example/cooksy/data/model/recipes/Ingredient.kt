@@ -1,5 +1,4 @@
-package com.example.cooksy.data.model
-import android.R.string
+package com.example.cooksy.data.model.recipes
 import com.google.gson.annotations.SerializedName
 
 data class Ingredient(

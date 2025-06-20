@@ -16,11 +16,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.example.cooksy.data.remote.RetrofitInstance
 import com.example.cooksy.data.repository.RecipeRepository
+import com.example.cooksy.data.repository.ViralRecipeRepository
+import com.example.cooksy.data.storage.ViralRecipeStorage
 import com.example.cooksy.presentation.navigation.AppNavGraph
 import com.example.cooksy.ui.theme.CooksyTheme
-import com.example.cooksy.viewModel.RecipeViewModel
-import com.example.cooksy.viewModel.RecipeViewModelFactory
-
+import com.example.cooksy.viewModel.recipe.RecipeViewModel
+import com.example.cooksy.viewModel.recipe.RecipeViewModelFactory
+import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
+import com.example.cooksy.viewModel.viral.ViralRecipeViewModelFactory
 
 
 class MainActivity : ComponentActivity() {
@@ -28,34 +31,38 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        //  RecipeViewModel (para recetas desde la API)
         val apiService = RetrofitInstance.api
-        val repository = RecipeRepository(apiService)
-        val factory = RecipeViewModelFactory(repository)
-        val recipeViewModel = ViewModelProvider(this, factory)[RecipeViewModel::class.java]
+        val recipeRepository = RecipeRepository(apiService)
+        val recipeFactory = RecipeViewModelFactory(recipeRepository)
+        val recipeViewModel = ViewModelProvider(this, recipeFactory)[RecipeViewModel::class.java]
 
-                setContent {
-                    CooksyTheme {
-                        val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
+        // 🔹 ViralRecipeViewModel (para recetas virales guardadas localmente)
+        val viralFactory = ViralRecipeViewModelFactory(applicationContext)
+        val viralRecipeViewModel = ViewModelProvider(this, viralFactory)[ViralRecipeViewModel::class.java]
 
-                        SideEffect {
-                            window.statusBarColor = Color.TRANSPARENT
-                            WindowInsetsControllerCompat(
-                                window,
-                                window.decorView
-                            ).isAppearanceLightStatusBars = false
-                        }
+        setContent {
+            CooksyTheme {
+                val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
 
-                        Surface(
-                            modifier = Modifier.fillMaxSize(),
-                            color = MaterialTheme.colorScheme.background
-                        ) {
-                            val navController = rememberNavController()
-
-                            AppNavGraph(navController = navController, recipeViewModel = recipeViewModel)
-                        }
-                    }
+                SideEffect {
+                    window.statusBarColor = Color.TRANSPARENT
+                    WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
                 }
+
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val navController = rememberNavController()
+
+                    AppNavGraph(
+                        navController = navController,
+                        recipeViewModel = recipeViewModel,
+                        viralRecipeViewModel = viralRecipeViewModel
+                    )
+                }
+            }
         }
-
     }
-
+}

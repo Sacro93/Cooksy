@@ -1,26 +1,12 @@
-package com.example.cooksy.viewModel
+package com.example.cooksy.viewModel.recipe
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.cooksy.data.repository.RecipeRepository
 import androidx.lifecycle.viewModelScope
-import com.example.cooksy.data.model.Recipe
-import com.example.cooksy.data.model.RecipeCategory
+import com.example.cooksy.data.repository.RecipeRepository
 import com.example.cooksy.presentation.screens.recipes.RecipeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-
-/*✔ Lógica reactiva simple.
-
-✔ La UI nunca queda en estado inválido.
-
-✔ Evitamos llamadas duplicadas si ya teníamos los datos cargados.
-
-✔ El ViewModel toma control de cuándo se llama por primera vez, y no la UI.*/
-
-//Offset para scroll infinito = desactivado
 
 class RecipeViewModel(
     private val repository: RecipeRepository
@@ -54,5 +40,3 @@ class RecipeViewModel(
     }
 
 }
-
-

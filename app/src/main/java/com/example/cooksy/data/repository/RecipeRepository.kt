@@ -1,7 +1,7 @@
 package com.example.cooksy.data.repository
 
 import android.util.Log
-import com.example.cooksy.data.model.Recipe
+import com.example.cooksy.data.model.recipes.Recipe
 import com.example.cooksy.data.remote.RecipeService
 
 //Offset para scroll infinito = desactivado

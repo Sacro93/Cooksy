@@ -1,5 +1,4 @@
-package com.example.cooksy.viewModel
-
+package com.example.cooksy.viewModel.recipe
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

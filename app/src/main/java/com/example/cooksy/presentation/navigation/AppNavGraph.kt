@@ -1,14 +1,6 @@
 package com.example.cooksy.presentation.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -24,13 +16,16 @@ import com.example.cooksy.presentation.screens.recipes.RecipeListScreen
 import com.example.cooksy.presentation.screens.register.RegisterScreen
 import com.example.cooksy.presentation.screens.supermarket.SupermarketListScreen
 import com.example.cooksy.presentation.screens.virals.ViralRecipesScreen
-import com.example.cooksy.viewModel.RecipeViewModel
+import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.presentation.screens.recipes.RecipeDetailScreen
+import com.example.cooksy.presentation.screens.virals.AddViralRecipeScreen
+import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
-    recipeViewModel: RecipeViewModel
+    recipeViewModel: RecipeViewModel,
+    viralRecipeViewModel: ViralRecipeViewModel
 ) {
     NavHost(
         navController = navController,
@@ -71,8 +66,20 @@ fun AppNavGraph(
             )
         }
 
-        // Otras pantallas
-        composable(Routes.VIRAL_RECIPES) { ViralRecipesScreen() }
+        composable(Routes.VIRAL_RECIPES) {
+            ViralRecipesScreen(
+                navController = navController,
+                viewModel = viralRecipeViewModel
+            )
+        }
+
+        composable(Routes.ADD_VIRAL_RECIPE) {
+            AddViralRecipeScreen(
+                navController = navController,
+                viewModel = viralRecipeViewModel
+            )
+        }
+
         composable(Routes.SUPERMARKET_LIST) { SupermarketListScreen() }
         composable(Routes.FAVOURITES) { FavouriteScreen() }
         composable(Routes.PROFILE) { ProfileScreen() }

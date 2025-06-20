@@ -11,6 +11,8 @@ object Routes {
     const val RECIPE_DETAIL = "detail/{recipeId}"
 
     const val VIRAL_RECIPES = "viral_recipes"
+    const val ADD_VIRAL_RECIPE = "add_viral_recipe"
+
     const val SUPERMARKET_LIST = "supermarket_list"
     const val FAVOURITES = "favourites"
     const val PROFILE = "profile"

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.HtmlCompat
 import coil.compose.rememberAsyncImagePainter
-import com.example.cooksy.data.model.Recipe
+import com.example.cooksy.data.model.recipes.Recipe
 
 @Composable
 fun RecipeDetailContent(recipe: Recipe, modifier: Modifier = Modifier) {
