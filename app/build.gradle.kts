@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -25,8 +24,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -73,11 +71,13 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-//firebase
+    //firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth.ktx)
 
-
+    // Firestore
+    implementation(libs.firebase.firestore.ktx)
     //icons extended
 
     implementation(libs.androidx.material.icons.extended)

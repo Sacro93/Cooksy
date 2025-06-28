@@ -19,7 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.cooksy.data.SectionItem
+import com.example.cooksy.data.model.recipes.SectionItem
 import com.example.cooksy.presentation.components.BottomNavigationBar
 import com.example.cooksy.presentation.components.CardSectionBig
 import com.example.cooksy.presentation.components.CardSectionSmall
@@ -63,20 +63,22 @@ fun HomeScreen(navController: NavHostController) {
                         .height(200.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.elementos), // Imagen decorativa
+                        painter = painterResource(id = R.drawable.elementos),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxSize()
-                            .alpha(0.2f) // Hacer la imagen bien transparente
+                            .alpha(0.2f)
                     )
-                    // Avatar
                     Box(
                         modifier = Modifier
                             .align(Alignment.Center)
                             .size(80.dp)
                             .clip(CircleShape)
-                            .background(Color.White.copy(alpha = 0.3f)),
+                            .background(Color.White.copy(alpha = 0.3f))
+                            .clickable {
+
+                            },
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
@@ -86,14 +88,13 @@ fun HomeScreen(navController: NavHostController) {
                                 .size(60.dp)
                                 .clip(CircleShape)
                         )
-
                     }
+
 
                 }
 
                 Spacer(modifier = Modifier.height(25.dp))
 
-                // Card Principal "Explorar Recetas"
                 CardSectionBig(
                     label = "Explorar Recetas",
                     imageRes = R.drawable.recipes,

@@ -15,11 +15,15 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.example.cooksy.data.remote.RetrofitInstance
+import com.example.cooksy.data.repository.AuthRepository
 import com.example.cooksy.data.repository.RecipeRepository
-import com.example.cooksy.data.repository.ViralRecipeRepository
-import com.example.cooksy.data.storage.ViralRecipeStorage
 import com.example.cooksy.presentation.navigation.AppNavGraph
+import com.example.cooksy.presentation.navigation.Routes
 import com.example.cooksy.ui.theme.CooksyTheme
+import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.SessionViewModelFactory
+import com.example.cooksy.viewModel.place.PlaceViewModel
+import com.example.cooksy.viewModel.place.PlaceViewModelFactory
 import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.viewModel.recipe.RecipeViewModelFactory
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
@@ -31,20 +35,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        //  RecipeViewModel (para recetas desde la API)
         val apiService = RetrofitInstance.api
         val recipeRepository = RecipeRepository(apiService)
         val recipeFactory = RecipeViewModelFactory(recipeRepository)
         val recipeViewModel = ViewModelProvider(this, recipeFactory)[RecipeViewModel::class.java]
 
-        // 🔹 ViralRecipeViewModel (para recetas virales guardadas localmente)
         val viralFactory = ViralRecipeViewModelFactory(applicationContext)
         val viralRecipeViewModel = ViewModelProvider(this, viralFactory)[ViralRecipeViewModel::class.java]
 
+        val placeFactory = PlaceViewModelFactory(applicationContext)
+        val placeViewModel = ViewModelProvider(this, placeFactory)[PlaceViewModel::class.java]
+
+        val authRepository = AuthRepository()
+        val sessionFactory = SessionViewModelFactory(authRepository)
+        val sessionViewModel = ViewModelProvider(this, sessionFactory)[SessionViewModel::class.java]
+
+        val startDestination = if (sessionViewModel.isUserLoggedIn) Routes.HOME else Routes.LOGIN
+
         setContent {
             CooksyTheme {
-                val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
-
                 SideEffect {
                     window.statusBarColor = Color.TRANSPARENT
                     WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
@@ -59,10 +68,13 @@ class MainActivity : ComponentActivity() {
                     AppNavGraph(
                         navController = navController,
                         recipeViewModel = recipeViewModel,
-                        viralRecipeViewModel = viralRecipeViewModel
+                        viralRecipeViewModel = viralRecipeViewModel,
+                        sessionViewModel = sessionViewModel,
+                        placeViewModel = placeViewModel
                     )
                 }
             }
         }
     }
 }
+

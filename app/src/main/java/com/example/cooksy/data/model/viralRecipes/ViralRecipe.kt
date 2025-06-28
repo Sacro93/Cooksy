@@ -12,6 +12,7 @@ data class ViralRecipe(
     val category: String? = null
 )
 
+@Serializable
 enum class Platform {
     INSTAGRAM, TIKTOK, YOUTUBE
 }

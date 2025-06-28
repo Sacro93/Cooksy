@@ -6,11 +6,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.cooksy.presentation.StartUpScreen
 import com.example.cooksy.presentation.screens.favourites.FavouriteScreen
 import com.example.cooksy.presentation.screens.home.HomeScreen
 import com.example.cooksy.presentation.screens.ia.CookLabScreen
 import com.example.cooksy.presentation.screens.login.LoginScreen
-import com.example.cooksy.presentation.screens.profile.ProfileScreen
+import com.example.cooksy.presentation.screens.place.PlaceScreen
 import com.example.cooksy.presentation.screens.recipes.CategorySelectionScreen
 import com.example.cooksy.presentation.screens.recipes.RecipeListScreen
 import com.example.cooksy.presentation.screens.register.RegisterScreen
@@ -19,20 +20,41 @@ import com.example.cooksy.presentation.screens.virals.ViralRecipesScreen
 import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.presentation.screens.recipes.RecipeDetailScreen
 import com.example.cooksy.presentation.screens.virals.AddViralRecipeScreen
+import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.place.PlaceViewModel
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
+    sessionViewModel: SessionViewModel,
     recipeViewModel: RecipeViewModel,
-    viralRecipeViewModel: ViralRecipeViewModel
+    viralRecipeViewModel: ViralRecipeViewModel,
+    placeViewModel: PlaceViewModel,
+
+
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.HOME
+        startDestination = Routes.STARTUP
     ) {
-        composable(Routes.LOGIN) { LoginScreen() }
-        composable(Routes.REGISTER) { RegisterScreen() }
+
+        composable(Routes.STARTUP) {
+            StartUpScreen(navController = navController, sessionViewModel = sessionViewModel)
+        }
+        composable(Routes.LOGIN) {
+            LoginScreen(
+                navController = navController,
+                onSignupClick = {
+                    navController.navigate(Routes.REGISTER)
+                }
+            )
+        }
+
+        composable(Routes.REGISTER) {
+            RegisterScreen(navController = navController, viewModel = sessionViewModel)
+        }
+
 
         composable(Routes.HOME) {
             HomeScreen(navController = navController)
@@ -80,9 +102,15 @@ fun AppNavGraph(
             )
         }
 
+        composable(Routes.PLACE_LIST) {
+            PlaceScreen(
+                navController = navController,
+                viewModel = placeViewModel
+            )
+        }
+
         composable(Routes.SUPERMARKET_LIST) { SupermarketListScreen() }
         composable(Routes.FAVOURITES) { FavouriteScreen() }
-        composable(Routes.PROFILE) { ProfileScreen() }
         composable(Routes.COOK_LAB) { CookLabScreen() }
     }
 }

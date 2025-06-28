@@ -1,4 +1,4 @@
-package com.example.cooksy.presentation.screens.virals
+package com.example.cooksy.presentation.screens.place
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -18,30 +18,29 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.cooksy.data.model.viralRecipes.ViralRecipe
-import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 import com.example.cooksy.R
-import com.example.cooksy.data.model.viralRecipes.Platform
-
+import com.example.cooksy.data.model.place.Place
+import com.example.cooksy.data.model.place.PlaceCategory
+import com.example.cooksy.viewModel.place.PlaceViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddViralRecipeScreen(
+fun AddPlaceScreen(
     navController: NavHostController,
-    viewModel: ViralRecipeViewModel
+    viewModel: PlaceViewModel
 ) {
     var title by remember { mutableStateOf("") }
     var url by remember { mutableStateOf("") }
-    var selectedPlatform by remember { mutableStateOf<Platform?>(null) }
-    var selectedCategory by remember { mutableStateOf("dulce") }
+    var selectedPlatform by remember { mutableStateOf("instagram") }
+    var selectedCategory by remember { mutableStateOf<PlaceCategory?>(null) }
 
-    val categorias = listOf("dulce", "salado", "agridulce")
+    val platforms = listOf("instagram", "tiktok", "youtube")
     val context = LocalContext.current
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Agregar Receta Viral") },
+                title = { Text("Agregar Lugar") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
@@ -59,7 +58,7 @@ fun AddViralRecipeScreen(
             OutlinedTextField(
                 value = title,
                 onValueChange = { title = it },
-                label = { Text("Título") },
+                label = { Text("Nombre del lugar") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -72,11 +71,12 @@ fun AddViralRecipeScreen(
 
             Text("Selecciona la plataforma:", style = MaterialTheme.typography.bodyMedium)
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                Platform.entries.forEach { platform ->
-                    val imageRes = when (platform) {
-                        Platform.INSTAGRAM -> R.drawable.instagram
-                        Platform.TIKTOK -> R.drawable.tiktok
-                        Platform.YOUTUBE -> R.drawable.youtube
+                platforms.forEach { platform ->
+                    val imageRes = when (platform.lowercase()) {
+                        "instagram" -> R.drawable.instagram
+                        "tiktok" -> R.drawable.tiktok
+                        "youtube" -> R.drawable.youtube
+                        else -> R.drawable.ic_launcher_foreground
                     }
 
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -92,29 +92,29 @@ fun AddViralRecipeScreen(
                         ) {
                             Image(
                                 painter = painterResource(id = imageRes),
-                                contentDescription = platform.name,
+                                contentDescription = platform,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
-                        Text(platform.name.lowercase().replaceFirstChar { it.uppercase() })
+                        Text(platform.replaceFirstChar { it.uppercase() })
                     }
                 }
             }
 
-            Text("Selecciona el tipo de receta:", style = MaterialTheme.typography.bodyMedium)
+            Text("Selecciona la categoría:", style = MaterialTheme.typography.bodyMedium)
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                categorias.forEach { categoria ->
+                PlaceCategory.entries.forEach { category ->
                     OutlinedButton(
-                        onClick = { selectedCategory = categoria },
+                        onClick = { selectedCategory = category },
                         border = BorderStroke(
                             1.dp,
-                            if (selectedCategory == categoria) Color.Blue else Color.Gray
+                            if (selectedCategory == category) Color.Blue else Color.Gray
                         ),
                         colors = ButtonDefaults.outlinedButtonColors(
-                            containerColor = if (selectedCategory == categoria) Color(0xFFE3F2FD) else Color.Transparent
+                            containerColor = if (selectedCategory == category) Color(0xFFE3F2FD) else Color.Transparent
                         )
                     ) {
-                        Text(categoria.replaceFirstChar { it.uppercase() })
+                        Text(category.displayName)
                     }
                 }
             }
@@ -123,28 +123,24 @@ fun AddViralRecipeScreen(
 
             Button(
                 onClick = {
-                    if (title.isNotBlank() && url.isNotBlank() && selectedPlatform != null && selectedCategory.isNotBlank()) {
-                        viewModel.addRecipe(
-                            ViralRecipe(
+                    if (title.isNotBlank() && url.isNotBlank() && selectedCategory != null) {
+                        viewModel.addPlace(
+                            Place(
                                 title = title,
                                 url = url,
-                                platform = selectedPlatform!!,
-                                category = selectedCategory
+                                platform = selectedPlatform,
+                                category = selectedCategory!!
                             )
                         )
                         navController.popBackStack()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Completa todos los campos, elige una plataforma y una categoría",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
-
+                    else {
+                        Toast.makeText(context, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Guardar Receta")
+                Text("Guardar Lugar")
             }
         }
     }

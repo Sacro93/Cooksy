@@ -61,7 +61,7 @@ fun ViralRecipesScreen(
                 (selectedCategory == null || it.category == selectedCategory)
     }
 
-    val categorias = listOf("dulce", "salado", "agridulce")
+    val categories = listOf("dulce", "salado", "agridulce")
 
     Scaffold(
         topBar = {
@@ -111,11 +111,11 @@ fun ViralRecipesScreen(
                         .horizontalScroll(rememberScrollState())
                         .padding(start = 16.dp, bottom = 8.dp)
                 ) {
-                    categorias.forEach { categoria ->
-                        val isSelected = selectedCategory == categoria
+                    categories.forEach { category ->
+                        val isSelected = selectedCategory == category
                         OutlinedButton(
                             onClick = {
-                                selectedCategory = if (isSelected) null else categoria
+                                selectedCategory = if (isSelected) null else category
                             },
                             border = BorderStroke(
                                 1.dp,
@@ -127,7 +127,7 @@ fun ViralRecipesScreen(
                             ),
                             modifier = Modifier.padding(end = 8.dp)
                         ) {
-                            Text(categoria.replaceFirstChar { it.uppercase() })
+                            Text(category.replaceFirstChar { it.uppercase() })
                         }
                     }
                 }

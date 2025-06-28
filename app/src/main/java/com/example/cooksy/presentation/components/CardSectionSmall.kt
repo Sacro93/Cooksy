@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.cooksy.data.SectionItem
+import com.example.cooksy.data.model.recipes.SectionItem
 
 @Composable
 fun CardSectionSmall(section: SectionItem, navController: NavHostController) {
