@@ -17,12 +17,28 @@ interface RecipeService {
     suspend fun getRecipes(
         @Query("type") type: String? = null,
         // @Query("offset") offset: Int = 0,
+        @Query("sort") sort: String = "popularity", //ordenar por popularidad
+
         @Query("addRecipeInformation") addInfo: Boolean = true,
         @Query("number") number: Int = 10,
         @Query("apiKey") apiKey: String = ApiConfig.API_KEY
     ): RecipeResponse
 
-//sirve para obtener una receta en detalle, incluyendo instructions e ingredients.
+
+    @GET("recipes/complexSearch")
+    suspend fun searchRecipesByQuery(
+        @Query("query") query: String,
+        @Query("number") number: Int = 10,
+        @Query("addRecipeInformation") addInfo: Boolean = true,
+        @Query("sort") sort: String = "popularity",
+        @Query("apiKey") apiKey: String = ApiConfig.API_KEY
+    ): RecipeResponse
+
+
+
+
+
+    //sirve para obtener una receta en detalle, incluyendo instructions e ingredients.
     @GET("recipes/{id}/information")
     suspend fun getRecipeDetail(
         @Path("id") id: Int,

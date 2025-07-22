@@ -1,11 +1,10 @@
-package com.example.cooksy.viewModel
+package com.example.cooksy.viewModel.session
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cooksy.data.repository.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import androidx.lifecycle.viewModelScope
-import com.example.cooksy.data.model.User
 import kotlinx.coroutines.launch
 
 class SessionViewModel(

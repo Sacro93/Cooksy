@@ -10,7 +10,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
@@ -20,8 +19,8 @@ import com.example.cooksy.data.repository.RecipeRepository
 import com.example.cooksy.presentation.navigation.AppNavGraph
 import com.example.cooksy.presentation.navigation.Routes
 import com.example.cooksy.ui.theme.CooksyTheme
-import com.example.cooksy.viewModel.SessionViewModel
-import com.example.cooksy.viewModel.SessionViewModelFactory
+import com.example.cooksy.viewModel.session.SessionViewModel
+import com.example.cooksy.viewModel.session.SessionViewModelFactory
 import com.example.cooksy.viewModel.place.PlaceViewModel
 import com.example.cooksy.viewModel.place.PlaceViewModelFactory
 import com.example.cooksy.viewModel.recipe.RecipeViewModel

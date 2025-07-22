@@ -11,7 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cooksy.presentation.navigation.Routes
-import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.session.SessionViewModel
 import kotlinx.coroutines.delay
 
 @Composable

@@ -7,6 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,13 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cooksy.R
 import com.example.cooksy.presentation.navigation.Routes
-import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.session.SessionViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
@@ -87,6 +91,7 @@ fun LoginScreen(
             .fillMaxSize()
             .background(Color.White)
     ) {
+        /*
         // Parte superior con imagen de fondo y logo
         Box(
             modifier = Modifier
@@ -107,6 +112,40 @@ fun LoginScreen(
                 contentDescription = "Logo Cooksy",
                 modifier = Modifier.size(150.dp).clip(RoundedCornerShape(32.dp))
             )
+        }
+*/
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
+                .clip(RoundedCornerShape(bottomStart = 60.dp, bottomEnd = 60.dp))
+                .background(Color(0xFF9C27B0)),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.elementos),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .matchParentSize()
+                    .alpha(0.2f)
+            )
+
+            Box(
+                modifier = Modifier
+                    .size(160.dp)
+                    .clip(RoundedCornerShape(40.dp))
+                    .background(Color.White.copy(alpha = 0.7f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.cooksy_512px),
+                    contentDescription = "Logo Cooksy",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(24.dp))
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -133,16 +172,29 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            var showPassword by remember { mutableStateOf(false) }
+
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
                 shape = RoundedCornerShape(12.dp),
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    val icon = if (showPassword) Icons.Default.VisibilityOff else Icons.Default.Visibility
+                    val description = if (showPassword) "Ocultar contraseña" else "Mostrar contraseña"
+                    IconButton(onClick = { showPassword = !showPassword }) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = description
+                        )
+                    }
+                },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
             )
+
 
             Spacer(modifier = Modifier.height(8.dp))
 

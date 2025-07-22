@@ -15,6 +15,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import com.example.cooksy.data.model.recipes.RecipeCategory
+import com.example.cooksy.data.model.recipes.RecipeUiState
 import com.example.cooksy.presentation.navigation.Routes
 
 @Composable
@@ -97,7 +98,6 @@ fun RecipeListScreen(
                 )
             }
 
-            else -> Text("Selecciona una categoría", modifier = Modifier.padding(16.dp))
         }
     }
 }

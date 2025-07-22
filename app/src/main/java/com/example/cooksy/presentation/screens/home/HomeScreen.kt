@@ -17,8 +17,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.cooksy.data.model.recipes.SectionItem
 import com.example.cooksy.presentation.components.BottomNavigationBar
 import com.example.cooksy.presentation.components.CardSectionBig
@@ -26,11 +28,8 @@ import com.example.cooksy.presentation.components.CardSectionSmall
 import com.example.cooksy.presentation.navigation.Routes
 
 
-
-
 @Composable
 fun HomeScreen(navController: NavHostController) {
-
     Scaffold(
         containerColor = Color.Transparent,
         bottomBar = {
@@ -77,7 +76,7 @@ fun HomeScreen(navController: NavHostController) {
                             .clip(CircleShape)
                             .background(Color.White.copy(alpha = 0.3f))
                             .clickable {
-
+                                // Ir al perfil si se desea
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -89,42 +88,40 @@ fun HomeScreen(navController: NavHostController) {
                                 .clip(CircleShape)
                         )
                     }
-
-
                 }
 
-                Spacer(modifier = Modifier.height(25.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-                CardSectionBig(
-                    label = "Explorar Recetas",
-                    imageRes = R.drawable.recipes,
-                    route = Routes.CATEGORY_SELECTOR,
-                    navController = navController
-                )
-
-                Spacer(modifier = Modifier.height(40.dp))
-
+                // Cuadrícula 2x2 con 4 accesos
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(300.dp)
+                        .weight(1f),
+                            userScrollEnabled = false
                 ) {
-                    items(sections) { section ->
+                    items(sectionsHome) { section ->
                         CardSectionSmall(section = section, navController = navController)
                     }
                 }
+
+                Spacer(modifier = Modifier.height(32.dp))
             }
         }
     }
 }
-
-
-
-val sections = listOf(
+val sectionsHome = listOf(
+    SectionItem("Recetas", R.drawable.recipes, Routes.CATEGORY_SELECTOR),
     SectionItem("Virales", R.drawable.virales, Routes.VIRAL_RECIPES),
-    SectionItem("Al Súper", R.drawable.supermarket, Routes.SUPERMARKET_LIST)
+    SectionItem("Al Súper", R.drawable.supermarket, Routes.SUPERMARKET_LIST),
+    SectionItem("Lugares", R.drawable.mapita1, Routes.PLACE_LIST)
 )
-
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun HomeScreenPreview() {
+    // Usamos un NavController simulado para preview
+    val navController = rememberNavController()
+    HomeScreen(navController = navController)
+}

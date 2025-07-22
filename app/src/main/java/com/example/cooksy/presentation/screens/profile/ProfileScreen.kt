@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.sesion.SessionViewModel
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.graphics.Color

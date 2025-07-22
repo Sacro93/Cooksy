@@ -11,6 +11,7 @@ import com.example.cooksy.presentation.screens.favourites.FavouriteScreen
 import com.example.cooksy.presentation.screens.home.HomeScreen
 import com.example.cooksy.presentation.screens.ia.CookLabScreen
 import com.example.cooksy.presentation.screens.login.LoginScreen
+import com.example.cooksy.presentation.screens.place.AddPlaceScreen
 import com.example.cooksy.presentation.screens.place.PlaceScreen
 import com.example.cooksy.presentation.screens.recipes.CategorySelectionScreen
 import com.example.cooksy.presentation.screens.recipes.RecipeListScreen
@@ -19,8 +20,9 @@ import com.example.cooksy.presentation.screens.supermarket.SupermarketListScreen
 import com.example.cooksy.presentation.screens.virals.ViralRecipesScreen
 import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.presentation.screens.recipes.RecipeDetailScreen
+import com.example.cooksy.presentation.screens.recipes.RecipeSearchScreen
 import com.example.cooksy.presentation.screens.virals.AddViralRecipeScreen
-import com.example.cooksy.viewModel.SessionViewModel
+import com.example.cooksy.viewModel.session.SessionViewModel
 import com.example.cooksy.viewModel.place.PlaceViewModel
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 
@@ -88,6 +90,11 @@ fun AppNavGraph(
             )
         }
 
+        composable(Routes.RECIPE_SEARCH) {
+            RecipeSearchScreen(navController = navController, viewModel = recipeViewModel)
+        }
+
+
         composable(Routes.VIRAL_RECIPES) {
             ViralRecipesScreen(
                 navController = navController,
@@ -104,6 +111,13 @@ fun AppNavGraph(
 
         composable(Routes.PLACE_LIST) {
             PlaceScreen(
+                navController = navController,
+                viewModel = placeViewModel
+            )
+        }
+
+        composable(Routes.ADD_PLACE) {
+            AddPlaceScreen(
                 navController = navController,
                 viewModel = placeViewModel
             )

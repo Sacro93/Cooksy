@@ -105,21 +105,20 @@ fun PlaceScreen(
         }
     ) { padding ->
 
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(brush = backgroundBrush)
                 .padding(padding)
         ) {
-            Column {
-                OutlinedTextField(
-                    value = searchQuery,
-                    onValueChange = { searchQuery = it },
-                    label = { Text("Buscar por título") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp) )
-            }
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                label = { Text("Buscar por título") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
 
             Row(
                 modifier = Modifier
@@ -148,7 +147,8 @@ fun PlaceScreen(
             }
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.weight(1f)
             ) {
                 items(filteredPlaces) { place ->
                     val icon = when (place.platform.lowercase()) {
@@ -236,11 +236,6 @@ fun PlaceScreen(
                     }
                 )
             }
-
-
-
-
-
         }
     }
 }

@@ -30,6 +30,7 @@ fun AddPlaceScreen(
     viewModel: PlaceViewModel
 ) {
     var title by remember { mutableStateOf("") }
+    var direction by remember { mutableStateOf("") }
     var url by remember { mutableStateOf("") }
     var selectedPlatform by remember { mutableStateOf("instagram") }
     var selectedCategory by remember { mutableStateOf<PlaceCategory?>(null) }
@@ -66,6 +67,13 @@ fun AddPlaceScreen(
                 value = url,
                 onValueChange = { url = it },
                 label = { Text("Enlace") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            OutlinedTextField(
+                value = direction,
+                onValueChange = { direction = it },
+                label = { Text("Direccion del lugar") },
                 modifier = Modifier.fillMaxWidth()
             )
 

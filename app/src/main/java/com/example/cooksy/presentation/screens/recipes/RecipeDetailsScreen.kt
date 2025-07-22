@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
+import com.example.cooksy.data.model.recipes.RecipeUiState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

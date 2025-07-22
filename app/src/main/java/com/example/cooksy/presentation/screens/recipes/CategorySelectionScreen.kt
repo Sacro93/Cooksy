@@ -34,16 +34,14 @@ fun CategorySelectionScreen(navController: NavHostController) {
     val context = LocalContext.current
 
     val backgroundBrush = Brush.verticalGradient(
-        colors = listOf(Color(0xFF81D4FA), Color(0xFFE1F5FE)) // Celeste más parejo
+        colors = listOf(Color(0xFF81D4FA), Color(0xFFE1F5FE))
     )
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -59,9 +57,7 @@ fun CategorySelectionScreen(navController: NavHostController) {
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent // Se vuelve transparente para integrar bien con el degradado
-                )
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
             )
         },
         containerColor = Color.Transparent
@@ -78,6 +74,7 @@ fun CategorySelectionScreen(navController: NavHostController) {
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
+                // Categorías
                 items(RecipeCategory.allCategories) { category ->
                     val imageResId = remember(category) {
                         context.resources.getIdentifier(
@@ -107,22 +104,32 @@ fun CategorySelectionScreen(navController: NavHostController) {
                                     modifier = Modifier.fillMaxSize()
                                 )
                             }
+                        }
+                    }
+                }
 
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .align(Alignment.BottomCenter)
-                                    //.background(Color(0x99000000)) // fondo negro con transparencia
-                                    .padding(vertical = 8.dp)
-                            ) {
-//                                Text(
-//                                    text = category.displayName,
-//                                    color = Color.White,
-//                                    style = MaterialTheme.typography.titleMedium,
-//                                    textAlign = TextAlign.Center,
-//                                    modifier = Modifier.align(Alignment.Center)
-//                                )
-                            }
+                // Tarjeta extra para búsqueda libre
+                item {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(1f)
+                            .clickable {
+                                navController.navigate(Routes.RECIPE_SEARCH)
+                            },
+                        shape = RoundedCornerShape(20.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color.White)
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "Buscar libremente",
+                                color = Color.Black,
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                     }
                 }
@@ -130,3 +137,4 @@ fun CategorySelectionScreen(navController: NavHostController) {
         }
     }
 }
+

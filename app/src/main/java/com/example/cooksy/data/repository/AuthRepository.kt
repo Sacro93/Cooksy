@@ -2,15 +2,15 @@ package com.example.cooksy.data.repository
 
 import android.content.Context
 import com.example.cooksy.data.model.User
-import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import androidx.core.content.edit
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class AuthRepository {
 
