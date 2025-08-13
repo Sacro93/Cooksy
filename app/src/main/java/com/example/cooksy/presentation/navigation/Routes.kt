@@ -20,7 +20,6 @@ object Routes {
 
     const val SUPERMARKET_LIST = "supermarket_list"
     const val FAVOURITES = "favourites"
-    //const val PROFILE = "profile"
     const val COOK_LAB = "cook_lab"
 
     const val RECIPE_SEARCH = "search"

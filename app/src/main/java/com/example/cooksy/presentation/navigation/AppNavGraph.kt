@@ -25,6 +25,8 @@ import com.example.cooksy.presentation.screens.virals.AddViralRecipeScreen
 import com.example.cooksy.viewModel.session.SessionViewModel
 import com.example.cooksy.viewModel.place.PlaceViewModel
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
+// Importación añadida
+import com.example.cooksy.viewModel.ia.CookLabViewModel
 
 @Composable
 fun AppNavGraph(
@@ -33,8 +35,7 @@ fun AppNavGraph(
     recipeViewModel: RecipeViewModel,
     viralRecipeViewModel: ViralRecipeViewModel,
     placeViewModel: PlaceViewModel,
-
-
+    cookLabViewModel: CookLabViewModel // Parámetro añadido
 ) {
     NavHost(
         navController = navController,
@@ -125,6 +126,8 @@ fun AppNavGraph(
 
         composable(Routes.SUPERMARKET_LIST) { SupermarketListScreen() }
         composable(Routes.FAVOURITES) { FavouriteScreen() }
-        composable(Routes.COOK_LAB) { CookLabScreen() }
+        composable(Routes.COOK_LAB) {
+            CookLabScreen(viewModel = cookLabViewModel) // viewModel pasado a CookLabScreen
+        }
     }
 }

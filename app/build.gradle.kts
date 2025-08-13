@@ -1,9 +1,19 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
     kotlin("plugin.serialization") version "1.9.0"
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties") // Busca en la raíz del proyecto
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use { input ->
+        localProperties.load(input)
+    }
 }
 
 android {
@@ -16,8 +26,9 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        val openaiApiKey = localProperties.getProperty("OPENAI_API_KEY") ?: "YOUR_DEFAULT_API_KEY_IF_NOT_FOUND"
+        buildConfigField("String", "OPENAI_API_KEY", openaiApiKey)
     }
 
     buildTypes {
@@ -37,6 +48,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -90,5 +102,11 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
 
+    //oktp
+
+    implementation(libs.logging.interceptor)
+
+    // Timber for logging
+ implementation(libs.timber)
 
 }

@@ -27,6 +27,9 @@ import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.viewModel.recipe.RecipeViewModelFactory
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModelFactory
+// Importaciones añadidas
+import com.example.cooksy.viewModel.ia.CookLabViewModel
+import com.example.cooksy.viewModel.ia.provideCookLabViewModelFactory
 
 
 class MainActivity : ComponentActivity() {
@@ -49,6 +52,10 @@ class MainActivity : ComponentActivity() {
         val sessionFactory = SessionViewModelFactory(authRepository)
         val sessionViewModel = ViewModelProvider(this, sessionFactory)[SessionViewModel::class.java]
 
+        // Instanciación de CookLabViewModel
+        val cookLabFactory = provideCookLabViewModelFactory()
+        val cookLabViewModel = ViewModelProvider(this, cookLabFactory)[CookLabViewModel::class.java]
+
         val startDestination = if (sessionViewModel.isUserLoggedIn) Routes.HOME else Routes.LOGIN
 
         setContent {
@@ -69,11 +76,11 @@ class MainActivity : ComponentActivity() {
                         recipeViewModel = recipeViewModel,
                         viralRecipeViewModel = viralRecipeViewModel,
                         sessionViewModel = sessionViewModel,
-                        placeViewModel = placeViewModel
+                        placeViewModel = placeViewModel,
+                        cookLabViewModel = cookLabViewModel // Parámetro añadido
                     )
                 }
             }
         }
     }
 }
-
