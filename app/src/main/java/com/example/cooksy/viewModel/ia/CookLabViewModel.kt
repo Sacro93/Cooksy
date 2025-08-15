@@ -120,8 +120,6 @@ class CookLabViewModel(
     }
 
     private fun recipeToChatMessage(recipe: Recipe): ChatMessage {
-        // Customize this to format the recipe details as you like for the chat.
-        // This is a more detailed example.
         val ingredientsListString = recipe.ingredients?.joinToString(separator = "\n- ", prefix = "- ") { it.original } ?: "Not specified"
         val instructionsString = recipe.instructions?.replace("\n", "\n") ?: "Not specified" // Ensure newlines in instructions
 

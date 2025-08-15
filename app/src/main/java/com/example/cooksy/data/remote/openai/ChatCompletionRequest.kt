@@ -7,5 +7,4 @@ data class ChatCompletionRequest(
     @SerializedName("messages") val messages: List<ChatMessageDto>,
     @SerializedName("temperature") val temperature: Float = 0.7f, // Controla la aleatoriedad, 0.2 es más determinista, 0.8 más creativo
     @SerializedName("max_tokens") val maxTokens: Int = 1000 // Máximo de tokens a generar en la respuesta
-    // Puedes añadir más parámetros según la documentación de OpenAI si los necesitas (e.g., n, stream, stop, etc.)
 )

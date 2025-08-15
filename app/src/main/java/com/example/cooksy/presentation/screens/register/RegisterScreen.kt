@@ -28,7 +28,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+// import androidx.lifecycle.viewmodel.compose.viewModel // No es necesario si se pasa explícitamente
 import androidx.navigation.NavHostController
 import com.example.cooksy.R
 import com.example.cooksy.presentation.navigation.Routes
@@ -39,10 +39,10 @@ import kotlinx.coroutines.delay
 @Composable
 fun RegisterScreen(
     navController: NavHostController,
-    viewModel: SessionViewModel = viewModel()
+    viewModel: SessionViewModel
 ) {
     val context = LocalContext.current
-    var showPassword by remember { mutableStateOf(false) }
+    var showPassword by remember { mutableStateOf(false) } // Única definición de showPassword
 
     var fullName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -146,8 +146,6 @@ fun RegisterScreen(
             )
 
             Spacer(modifier = Modifier.height(16.dp))
-
-            var showPassword by remember { mutableStateOf(false) }
 
             OutlinedTextField(
                 value = password,

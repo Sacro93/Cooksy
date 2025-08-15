@@ -24,6 +24,7 @@ object Routes {
 
     const val RECIPE_SEARCH = "search"
 
+    const val PROFILE = "profile_screen"
 
     fun recipeDetail(recipeId: Int) = "detail/$recipeId"
     fun recipeListByCategory(categoryName: String) = "list/$categoryName"

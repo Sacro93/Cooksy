@@ -17,7 +17,6 @@ class CookLabRepositoryImpl : CookLabRepository {
     private val openAiService = RetrofitClient.openAiApiService
     private val gson = Gson()
 
-    // System prompt to set the AI's role and desired output format.
     private val systemPrompt = """
     You are a culinary assistant. Your goal is to provide recipe suggestions.
     You MUST respond with a VALID JSON array of recipe objects. 
@@ -42,7 +41,6 @@ class CookLabRepositoryImpl : CookLabRepository {
     }
 
     override suspend fun getRecipeSuggestions(userIngredientsText: List<String>): Result<List<Recipe>> {
-        // val apiKey = "Bearer ${BuildConfig.OPENAI_API_KEY}" // Eliminado
 
         if (BuildConfig.OPENAI_API_KEY.startsWith("YOUR_DEFAULT")) {
             Timber.e("OpenAI API Key is a default placeholder. Please set it in local.properties.")
@@ -55,19 +53,16 @@ class CookLabRepositoryImpl : CookLabRepository {
         )
 
         val request = ChatCompletionRequest(
-            model = "gpt-3.5-turbo-0125", // Or your preferred model supporting JSON mode
+            model = "gpt-3.5-turbo-0125",
             messages = messages,
-            temperature = 0.5f, // Lower temperature for more predictable JSON output
-            maxTokens = 2000,   // Adjust as needed for expected recipe detail
-            // For models that support it, you can explicitly request JSON output:
-            // responseFormat = mapOf("type" to "json_object") // Uncomment if your model supports this
+            temperature = 0.5f,
+            maxTokens = 2000,
         )
 
-        return withContext(Dispatchers.IO) { // Offload network call to IO dispatcher
+        return withContext(Dispatchers.IO) {
             try {
                 Timber.d("Requesting recipe suggestions for: $userIngredientsText")
-                // Se eliminó apiKey de la llamada
-                val response = openAiService.getChatCompletions(request) 
+                val response = openAiService.getChatCompletions(request)
 
                 if (response.isSuccessful) {
                     val chatResponse = response.body()
@@ -114,7 +109,6 @@ class CookLabRepositoryImpl : CookLabRepository {
     }
 
     private fun extractJsonArrayString(rawString: String): String {
-        // Attempt to extract content between the first '[' and the last ']'
         val startIndex = rawString.indexOfFirst { it == '[' }
         val endIndex = rawString.indexOfLast { it == ']' }
 
@@ -122,7 +116,7 @@ class CookLabRepositoryImpl : CookLabRepository {
             rawString.substring(startIndex, endIndex + 1).trim()
         } else {
             Timber.w("Could not find a clear JSON array in the raw string. Using trimmed original.")
-            rawString.trim() // Fallback to trimmed raw string if no clear array boundaries
+            rawString.trim()
         }
     }
 }

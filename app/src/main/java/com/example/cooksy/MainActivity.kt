@@ -19,23 +19,28 @@ import com.example.cooksy.data.repository.RecipeRepository
 import com.example.cooksy.presentation.navigation.AppNavGraph
 import com.example.cooksy.presentation.navigation.Routes
 import com.example.cooksy.ui.theme.CooksyTheme
-import com.example.cooksy.viewModel.session.SessionViewModel
-import com.example.cooksy.viewModel.session.SessionViewModelFactory
+import com.example.cooksy.viewModel.ia.CookLabViewModel
+import com.example.cooksy.viewModel.ia.provideCookLabViewModelFactory
 import com.example.cooksy.viewModel.place.PlaceViewModel
 import com.example.cooksy.viewModel.place.PlaceViewModelFactory
 import com.example.cooksy.viewModel.recipe.RecipeViewModel
 import com.example.cooksy.viewModel.recipe.RecipeViewModelFactory
+import com.example.cooksy.viewModel.session.SessionViewModel
+import com.example.cooksy.viewModel.session.SessionViewModelFactory
+// Import SupermarketViewModel and its factory
+import com.example.cooksy.viewModel.supermarket.SupermarketViewModel
+import com.example.cooksy.viewModel.supermarket.SupermarketViewModelFactory
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 import com.example.cooksy.viewModel.viral.ViralRecipeViewModelFactory
-// Importaciones añadidas
-import com.example.cooksy.viewModel.ia.CookLabViewModel
-import com.example.cooksy.viewModel.ia.provideCookLabViewModelFactory
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // --- AuthRepository is used by multiple ViewModels, instantiate once ---
+        val authRepository = AuthRepository()
 
         val apiService = RetrofitInstance.api
         val recipeRepository = RecipeRepository(apiService)
@@ -48,13 +53,16 @@ class MainActivity : ComponentActivity() {
         val placeFactory = PlaceViewModelFactory(applicationContext)
         val placeViewModel = ViewModelProvider(this, placeFactory)[PlaceViewModel::class.java]
 
-        val authRepository = AuthRepository()
         val sessionFactory = SessionViewModelFactory(authRepository)
         val sessionViewModel = ViewModelProvider(this, sessionFactory)[SessionViewModel::class.java]
 
-        // Instanciación de CookLabViewModel
         val cookLabFactory = provideCookLabViewModelFactory()
         val cookLabViewModel = ViewModelProvider(this, cookLabFactory)[CookLabViewModel::class.java]
+
+        // --- Instantiate SupermarketViewModel ---
+        val supermarketFactory = SupermarketViewModelFactory(authRepository) // Use the shared authRepository
+        val supermarketViewModel = ViewModelProvider(this, supermarketFactory)[SupermarketViewModel::class.java]
+
 
         val startDestination = if (sessionViewModel.isUserLoggedIn) Routes.HOME else Routes.LOGIN
 
@@ -77,7 +85,8 @@ class MainActivity : ComponentActivity() {
                         viralRecipeViewModel = viralRecipeViewModel,
                         sessionViewModel = sessionViewModel,
                         placeViewModel = placeViewModel,
-                        cookLabViewModel = cookLabViewModel // Parámetro añadido
+                        cookLabViewModel = cookLabViewModel,
+                        supermarketViewModel = supermarketViewModel // Pass the supermarketViewModel
                     )
                 }
             }

@@ -1,6 +1,7 @@
 package com.example.cooksy.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel // Needed for default ViewModel creation
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -13,20 +14,21 @@ import com.example.cooksy.presentation.screens.ia.CookLabScreen
 import com.example.cooksy.presentation.screens.login.LoginScreen
 import com.example.cooksy.presentation.screens.place.AddPlaceScreen
 import com.example.cooksy.presentation.screens.place.PlaceScreen
+import com.example.cooksy.presentation.screens.profile.ProfileScreen
 import com.example.cooksy.presentation.screens.recipes.CategorySelectionScreen
+import com.example.cooksy.presentation.screens.recipes.RecipeDetailScreen
 import com.example.cooksy.presentation.screens.recipes.RecipeListScreen
+import com.example.cooksy.presentation.screens.recipes.RecipeSearchScreen
 import com.example.cooksy.presentation.screens.register.RegisterScreen
 import com.example.cooksy.presentation.screens.supermarket.SupermarketListScreen
-import com.example.cooksy.presentation.screens.virals.ViralRecipesScreen
-import com.example.cooksy.viewModel.recipe.RecipeViewModel
-import com.example.cooksy.presentation.screens.recipes.RecipeDetailScreen
-import com.example.cooksy.presentation.screens.recipes.RecipeSearchScreen
 import com.example.cooksy.presentation.screens.virals.AddViralRecipeScreen
-import com.example.cooksy.viewModel.session.SessionViewModel
-import com.example.cooksy.viewModel.place.PlaceViewModel
-import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
-// Importación añadida
+import com.example.cooksy.presentation.screens.virals.ViralRecipesScreen
 import com.example.cooksy.viewModel.ia.CookLabViewModel
+import com.example.cooksy.viewModel.place.PlaceViewModel
+import com.example.cooksy.viewModel.recipe.RecipeViewModel
+import com.example.cooksy.viewModel.session.SessionViewModel
+import com.example.cooksy.viewModel.supermarket.SupermarketViewModel
+import com.example.cooksy.viewModel.viral.ViralRecipeViewModel
 
 @Composable
 fun AppNavGraph(
@@ -35,7 +37,8 @@ fun AppNavGraph(
     recipeViewModel: RecipeViewModel,
     viralRecipeViewModel: ViralRecipeViewModel,
     placeViewModel: PlaceViewModel,
-    cookLabViewModel: CookLabViewModel // Parámetro añadido
+    cookLabViewModel: CookLabViewModel,
+    supermarketViewModel: SupermarketViewModel // Add SupermarketViewModel parameter
 ) {
     NavHost(
         navController = navController,
@@ -48,6 +51,7 @@ fun AppNavGraph(
         composable(Routes.LOGIN) {
             LoginScreen(
                 navController = navController,
+                sessionViewModel = sessionViewModel, // Make sure this was also updated from previous error
                 onSignupClick = {
                     navController.navigate(Routes.REGISTER)
                 }
@@ -55,12 +59,12 @@ fun AppNavGraph(
         }
 
         composable(Routes.REGISTER) {
-            RegisterScreen(navController = navController, viewModel = sessionViewModel)
+            RegisterScreen(navController = navController, viewModel  = sessionViewModel)
         }
 
 
         composable(Routes.HOME) {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = navController,sessionViewModel = sessionViewModel)
         }
 
         composable(Routes.CATEGORY_SELECTOR) {
@@ -90,7 +94,9 @@ fun AppNavGraph(
                 navController = navController
             )
         }
-
+        composable(Routes.PROFILE) {
+            ProfileScreen(navController = navController, sessionViewModel = sessionViewModel)
+        }
         composable(Routes.RECIPE_SEARCH) {
             RecipeSearchScreen(navController = navController, viewModel = recipeViewModel)
         }
@@ -124,10 +130,15 @@ fun AppNavGraph(
             )
         }
 
-        composable(Routes.SUPERMARKET_LIST) { SupermarketListScreen() }
-        composable(Routes.FAVOURITES) { FavouriteScreen() }
+        composable(Routes.SUPERMARKET_LIST) {
+            SupermarketListScreen(
+                navController = navController, // Pass NavController
+                viewModel = supermarketViewModel // Pass SupermarketViewModel
+            )
+        }
+        composable(Routes.FAVOURITES) { FavouriteScreen() } // Assuming FavouriteScreen doesn't need these ViewModels yet
         composable(Routes.COOK_LAB) {
-            CookLabScreen(viewModel = cookLabViewModel) // viewModel pasado a CookLabScreen
+            CookLabScreen(viewModel = cookLabViewModel)
         }
     }
 }

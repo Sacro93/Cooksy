@@ -14,13 +14,11 @@ object RetrofitClient {
 
     private const val OPENAI_BASE_URL = "https://api.openai.com/"
 
-    // Logger para ver las peticiones y respuestas (muy útil para depurar)
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY // Puedes cambiar a .NONE en producción
+        level = HttpLoggingInterceptor.Level.BODY
     }
     private val authInterceptor = Interceptor { chain ->
         val requestBuilder = chain.request().newBuilder()
-        // Añade la cabecera de autorización solo si la clave no es la de por defecto
         if (!BuildConfig.OPENAI_API_KEY.startsWith("YOUR_DEFAULT")) {
             requestBuilder.addHeader("Authorization", "Bearer ${BuildConfig.OPENAI_API_KEY}")
         }
@@ -30,14 +28,14 @@ object RetrofitClient {
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(authInterceptor)
         .addInterceptor(loggingInterceptor)
-        .connectTimeout(30, TimeUnit.SECONDS) // Aumenta timeouts si es necesario
+        .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(OPENAI_BASE_URL)
-        .client(okHttpClient) // Usa el OkHttpClient configurado
+        .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

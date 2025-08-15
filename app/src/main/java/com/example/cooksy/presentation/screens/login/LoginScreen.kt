@@ -35,6 +35,7 @@ import com.example.cooksy.viewModel.session.SessionViewModel
 @Composable
 fun LoginScreen(
     navController: NavHostController,
+    sessionViewModel: SessionViewModel,
     viewModel: SessionViewModel = viewModel(),
     onSignupClick: () -> Unit = {}
 ) {
