@@ -149,12 +149,6 @@ Use Cases:
 
 ## 📷 Screenshots
 
-### 🔐 Login Screen
-![Login](https://drive.google.com/uc?id=14q0xoh4paNdw0Y_iR9EiPB7S3Y3XPows)
-
-### 📝 Register Screen
-![Register](https://drive.google.com/uc?id=1X3KcNyrns12mtQVQuFzg3m78elK5v10Z)
-
 ### 🏠 Home Screen
 ![Home](https://drive.google.com/uc?id=1q_nnPeHvxJ3W0p-tCKdfdoK6zdwbiw_h)
 
@@ -178,6 +172,13 @@ Use Cases:
 
 ### 🗺️ Place Detail
 ![Place_1](https://drive.google.com/uc?id=1jcGefS8LeoXkF8ItLTLmLtSCReLMHFFY)
+
+### 🔐 Login Screen
+![Login](https://drive.google.com/uc?id=14q0xoh4paNdw0Y_iR9EiPB7S3Y3XPows)
+
+### 📝 Register Screen
+![Register](https://drive.google.com/uc?id=1X3KcNyrns12mtQVQuFzg3m78elK5v10Z)
+
 
 ---
 
