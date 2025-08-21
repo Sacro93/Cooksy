@@ -147,18 +147,37 @@ Use Cases:
 
 ---
 
-## 📷 Screenshots (Optional)
+## 📷 Screenshots
 
-![Home]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1q_nnPeHvxJ3W0p-tCKdfdoK6zdwbiw_h/view?usp=drive_link))
-![Recipes]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1wmZZlNoK3Hls2LENfWdVFbl-Vpkan-Xo/view?usp=drive_link))
-![List_recipes]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1hx1c9FLht-aFgvw_gUY75No9e_bl5ofS/view?usp=drive_link))
-![Recipe_details]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1ROy86Ylj3FF2p16tEUZYD1WNgtIcGEwT/view?usp=drive_link))
-![Supermarket]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1UerT85SsaXUrN8hrSiBFIJuXKzMgJ_hA/view?usp=drive_link))
-![Cooklab]((https://drive.google.com/file/d/1v0HLQgn3-On4OcunEqUPQA8xm_O3Su6R/view?usp=drive_link))
-![Places]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1-0F1eGsqvp6DqXaYzc255g64FNs6jkAJ/view?usp=drive_link))
-![Place_1]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/1jcGefS8LeoXkF8ItLTLmLtSCReLMHFFY/view?usp=drive_link))
-![Login]([https://example.com/images/cooksy-home.png](https://drive.google.com/file/d/14q0xoh4paNdw0Y_iR9EiPB7S3Y3XPows/view?usp=drive_link))
-![Register]([(https://drive.google.com/file/d/1X3KcNyrns12mtQVQuFzg3m78elK5v10Z/view?usp=drive_link))
+### 🔐 Login Screen
+![Login](https://drive.google.com/uc?id=14q0xoh4paNdw0Y_iR9EiPB7S3Y3XPows)
+
+### 📝 Register Screen
+![Register](https://drive.google.com/uc?id=1X3KcNyrns12mtQVQuFzg3m78elK5v10Z)
+
+### 🏠 Home Screen
+![Home](https://drive.google.com/uc?id=1q_nnPeHvxJ3W0p-tCKdfdoK6zdwbiw_h)
+
+### 🍽️ Recipes
+![Recipes](https://drive.google.com/uc?id=1wmZZlNoK3Hls2LENfWdVFbl-Vpkan-Xo)
+
+### 📋 List of Recipes
+![List_recipes](https://drive.google.com/uc?id=1hx1c9FLht-aFgvw_gUY75No9e_bl5ofS)
+
+### 📖 Recipe Details
+![Recipe_details](https://drive.google.com/uc?id=1ROy86Ylj3FF2p16tEUZYD1WNgtIcGEwT)
+
+### 🛒 Supermarket List
+![Supermarket](https://drive.google.com/uc?id=1UerT85SsaXUrN8hrSiBFIJuXKzMgJ_hA)
+
+### 🤖 Cooklab (AI Chat)
+![Cooklab](https://drive.google.com/uc?id=1v0HLQgn3-On4OcunEqUPQA8xm_O3Su6R)
+
+### 📍 Places
+![Places](https://drive.google.com/uc?id=1-0F1eGsqvp6DqXaYzc255g64FNs6jkAJ)
+
+### 🗺️ Place Detail
+![Place_1](https://drive.google.com/uc?id=1jcGefS8LeoXkF8ItLTLmLtSCReLMHFFY)
 
 ---
 
