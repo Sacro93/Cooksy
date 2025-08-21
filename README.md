@@ -147,6 +147,9 @@ Use Cases:
 
 ---
 
+📷 Screenshots
+<div align="center"> <table> <tr> <td><img src="screenshots/login.jpg" alt="Login Screen" width="200"/></td> <td><img src="screenshots/Register.jpg" alt="Register Screen" width="200"/></td> <td><img src="screenshots/home.jpg" alt="Home Screen" width="200"/></td> </tr> <tr> <td><img src="screenshots/recipes_1.jpg" alt="Recipes" width="200"/></td> <td><img src="screenshots/list_recipes.jpg" alt="List of Recipes" width="200"/></td> <td><img src="screenshots/recipe.jpg" alt="Recipe Details" width="200"/></td> </tr> <tr> <td><img src="screenshots/supermarket_.jpg" alt="Supermarket List" width="200"/></td> <td><img src="screenshots/cooklab.jpg" alt="Cooklab" width="200"/></td> <td><img src="screenshots/places.jpg" alt="Places" width="200"/></td> </tr> <tr> <td colspan="3" align="center"><img src="screenshots/places_1.jpg" alt="Place Detail" width="200"/></td> </tr> </table> </div>
+
 ## 📷 Screenshots
 
 ### 🔐 Login Screen  
