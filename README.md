@@ -150,34 +150,45 @@ Use Cases:
 ## 📷 Screenshots
 
 ### 🔐 Login Screen  
-![Login](screenshots/login.jpg)
+
+<img src="screenshots/login.jpg" alt="Login Screen" width="300"/>
 
 ### 📝 Register Screen  
-![Register](screenshots/Register.jpg)
+
+<img src="screenshots/Register.jpg" alt="Login Screen" width="300"/>
 
 ### 🏠 Home Screen  
-![Home](screenshots/home.jpg)
+
+<img src="screenshots/home.jpg" alt="Login Screen" width="300"/>
 
 ### 🍽️ Recipes  
-![Recipes](screenshots/recipes_1.jpg)
+
+<img src="screenshots/recipes_1.jpg" alt="Login Screen" width="300"/>
 
 ### 📋 List of Recipes  
-![List_recipes](screenshots/list_recipes.jpg)
+
+<img src="screenshots/list_recipes.jpg" alt="Login Screen" width="300"/>
 
 ### 📖 Recipe Details  
-![Recipe_details](screenshots/recipe.jpg)
+
+<img src="screenshots/recipe.jpg" alt="Login Screen" width="300"/>
 
 ### 🛒 Supermarket List  
-![Supermarket](screenshots/supermarket_.jpg)
+
+<img src="screenshots/supermarket_.jpg" alt="Login Screen" width="300"/>
 
 ### 🤖 Cooklab (AI Chat)  
-![Cooklab](screenshots/cooklab.jpg)
+
+<img src="screenshots/cooklab.jpg" alt="Login Screen" width="300"/>
 
 ### 📍 Places  
-![Places](screenshots/places.jpg)
+
+<img src="screenshots/places.jpg" alt="Login Screen" width="300"/>
 
 ### 🗺️ Place Detail  
-![Places](screenshots/places_1.jpg)
+
+<img src="screenshots/places_1.jpg" alt="Login Screen" width="300"/>
+
 ---
 
 ## ⚙️ Project Setup
