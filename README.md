@@ -146,7 +146,59 @@ Use Cases:
   - NearbySearchResponse.kt  
 
 ---
-<table> <tr> <td align="center"> <strong>🔐 Login</strong><br/> <img src="screenshots/login.jpg" alt="Login" width="200"/> </td> <td align="center"> <strong>📝 Register</strong><br/> <img src="screenshots/Register.jpg" alt="Register" width="200"/> </td> </tr> <tr> <td align="center"> <strong>🏠 Home</strong><br/> <img src="screenshots/home.jpg" alt="Home" width="200"/> </td> <td align="center"> <strong>🍽️ Recipes</strong><br/> <img src="screenshots/recipes_1.jpg" alt="Recipes" width="200"/> </td> </tr> <tr> <td align="center"> <strong>📋 List of Recipes</strong><br/> <img src="screenshots/list_recipes.jpg" alt="List of Recipes" width="200"/> </td> <td align="center"> <strong>📖 Recipe Details</strong><br/> <img src="screenshots/recipe.jpg" alt="Recipe Details" width="200"/> </td> </tr> <tr> <td align="center"> <strong>🛒 Supermarket</strong><br/> <img src="screenshots/supermarket_.jpg" alt="Supermarket" width="200"/> </td> <td align="center"> <strong>🤖 Cooklab</strong><br/> <img src="screenshots/cooklab.jpg" alt="Cooklab" width="200"/> </td> </tr> <tr> <td align="center"> <strong>📍 Places</strong><br/> <img src="screenshots/places.jpg" alt="Places" width="200"/> </td> <td align="center"> <strong>🗺️ Place Detail</strong><br/> <img src="screenshots/places_1.jpg" alt="Place Detail" width="200"/> </td> </tr> </table>
+## 📷 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>🔐 Login</strong><br/>
+      <img src="screenshots/login.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>📝 Register</strong><br/>
+      <img src="screenshots/Register.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>🏠 Home</strong><br/>
+      <img src="screenshots/home.jpg" width="160"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>🍽️ Recipes</strong><br/>
+      <img src="screenshots/recipes_1.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>📋 List</strong><br/>
+      <img src="screenshots/list_recipes.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>📖 Details</strong><br/>
+      <img src="screenshots/recipe.jpg" width="160"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>🛒 Supermarket</strong><br/>
+      <img src="screenshots/supermarket_.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>🤖 Cooklab</strong><br/>
+      <img src="screenshots/cooklab.jpg" width="160"/>
+    </td>
+    <td align="center">
+      <strong>📍 Places</strong><br/>
+      <img src="screenshots/places.jpg" width="160"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3">
+      <strong>🗺️ Place Detail</strong><br/>
+      <img src="screenshots/places_1.jpg" width="160"/>
+    </td>
+  </tr>
+</table>
+
 
 ## 📷 Screenshots
 
