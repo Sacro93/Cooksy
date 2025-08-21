@@ -149,37 +149,35 @@ Use Cases:
 
 ## 📷 Screenshots
 
-### 🏠 Home Screen
-![Home](https://drive.google.com/uc?id=1q_nnPeHvxJ3W0p-tCKdfdoK6zdwbiw_h)
+### 🔐 Login Screen  
+![Login](screenshots/login.jpg)
 
-### 🍽️ Recipes
-![Recipes](https://drive.google.com/uc?id=1wmZZlNoK3Hls2LENfWdVFbl-Vpkan-Xo)
+### 📝 Register Screen  
+![Register](screenshots/Register.jpg)
 
-### 📋 List of Recipes
-![List_recipes](https://drive.google.com/uc?id=1hx1c9FLht-aFgvw_gUY75No9e_bl5ofS)
+### 🏠 Home Screen  
+![Home](screenshots/home.jpg)
 
-### 📖 Recipe Details
-![Recipe_details](https://drive.google.com/uc?id=1ROy86Ylj3FF2p16tEUZYD1WNgtIcGEwT)
+### 🍽️ Recipes  
+![Recipes](screenshots/recipes_1.jpg)
 
-### 🛒 Supermarket List
-![Supermarket](https://drive.google.com/uc?id=1UerT85SsaXUrN8hrSiBFIJuXKzMgJ_hA)
+### 📋 List of Recipes  
+![List_recipes](screenshots/list_recipes.jpg)
 
-### 🤖 Cooklab (AI Chat)
-![Cooklab](https://drive.google.com/uc?id=1v0HLQgn3-On4OcunEqUPQA8xm_O3Su6R)
+### 📖 Recipe Details  
+![Recipe_details](screenshots/recipe.jpg)
 
-### 📍 Places
-![Places](https://drive.google.com/uc?id=1-0F1eGsqvp6DqXaYzc255g64FNs6jkAJ)
+### 🛒 Supermarket List  
+![Supermarket](screenshots/supermarket_.jpg)
 
-### 🗺️ Place Detail
-![Place_1](https://drive.google.com/uc?id=1jcGefS8LeoXkF8ItLTLmLtSCReLMHFFY)
+### 🤖 Cooklab (AI Chat)  
+![Cooklab](screenshots/cooklab.jpg)
 
-### 🔐 Login Screen
-![Login](https://drive.google.com/uc?id=14q0xoh4paNdw0Y_iR9EiPB7S3Y3XPows)
+### 📍 Places  
+![Places](screenshots/places.jpg)
 
-### 📝 Register Screen
-![Register](https://drive.google.com/uc?id=1X3KcNyrns12mtQVQuFzg3m78elK5v10Z)
-
-
+### 🗺️ Place Detail  
+![Places](screenshots/places_1.jpg)
 ---
 
 ## ⚙️ Project Setup
