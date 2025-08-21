@@ -193,54 +193,11 @@ Use Cases:
   </tr>
   <tr>
     <td align="center" colspan="3">
-      <strong>🗺️ Place Detail</strong><br/>
+      <strong>🗺️ Place </strong><br/>
       <img src="screenshots/places_1.jpg" width="160"/>
     </td>
   </tr>
 </table>
-
-
-## 📷 Screenshots
-
-### 🔐 Login Screen  
-
-<img src="screenshots/login.jpg" alt="Login Screen" width="300"/>
-
-### 📝 Register Screen  
-
-<img src="screenshots/Register.jpg" alt="Login Screen" width="300"/>
-
-### 🏠 Home Screen  
-
-<img src="screenshots/home.jpg" alt="Login Screen" width="300"/>
-
-### 🍽️ Recipes  
-
-<img src="screenshots/recipes_1.jpg" alt="Login Screen" width="300"/>
-
-### 📋 List of Recipes  
-
-<img src="screenshots/list_recipes.jpg" alt="Login Screen" width="300"/>
-
-### 📖 Recipe Details  
-
-<img src="screenshots/recipe.jpg" alt="Login Screen" width="300"/>
-
-### 🛒 Supermarket List  
-
-<img src="screenshots/supermarket_.jpg" alt="Login Screen" width="300"/>
-
-### 🤖 Cooklab (AI Chat)  
-
-<img src="screenshots/cooklab.jpg" alt="Login Screen" width="300"/>
-
-### 📍 Places  
-
-<img src="screenshots/places.jpg" alt="Login Screen" width="300"/>
-
-### 🗺️ Place Detail  
-
-<img src="screenshots/places_1.jpg" alt="Login Screen" width="300"/>
 
 ---
 
